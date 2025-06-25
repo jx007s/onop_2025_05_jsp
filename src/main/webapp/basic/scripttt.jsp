@@ -85,6 +85,16 @@
 </style>
 	<div class="box">box1이야</div>
 	
+	<% for(int i = 10;i <50 ; i+=10){
+		out.println("<div class=\"box\">box"+i+"이야</div>");	
+	} 
+	for(int i = 100;i <500 ; i+=100){
+	%>
+	
+	<div class="box">box<%=i %> 이야</div>
+	
+	<%} %>
+	
 	
 </body>
 </html>
