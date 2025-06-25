@@ -16,7 +16,7 @@
 	</script>
 	<br/>
 	<%=new Date() %>
-	
+	<%  // jsp 코드는 페이지 소스 보기로 확인 불가 %>
 	
 </body>
 </html>
