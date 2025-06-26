@@ -45,5 +45,15 @@ public class ReqStudDTO {
 		return avg;
 	}
 	
-	
+	public String trStr() {
+		String ttt = "<tr>";
+		ttt+="<td>"+pname+"</td>";
+		ttt+="<td>"+kor+"</td>";
+		ttt+="<td>"+eng+"</td>";
+		ttt+="<td>"+mat+"</td>";
+		ttt+="<td>"+tot+"</td>";
+		ttt+="<td>"+avg+"</td>";
+		ttt+="</tr>";
+		return ttt;
+	}
 }
