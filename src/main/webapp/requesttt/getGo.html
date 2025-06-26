@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>getGo</title>
+</head>
+<body>
+<h1>getGo</h1>
+
+<form action="/jspPrj/GetPostGo" method="get">
+	<table border="">
+		<tr>
+			<td>이름</td>
+			<td><input type="text" name="pname" /></td>
+		</tr>
+		<tr>
+			<td>나이</td>
+			<td><input type="text" name="age" /></td>
+		</tr>
+		<tr>
+			<td>결혼</td>
+			<td>
+			<label>기혼<input type="radio" name="marriage" value="true" /></label>
+			<label>미혼<input type="radio" name="marriage" value="false" /></label>
+			</td>
+		</tr>
+		<tr>
+			<td>생일</td>
+			<td><input type="date" name="birth" /></td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center">
+				<input type="submit" value="가입" />
+			</td>
+		</tr>
+	</table>
+</form>
+</body>
+</html>
