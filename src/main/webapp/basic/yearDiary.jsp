@@ -18,6 +18,7 @@
 <style>
 img{
 	width:400px;
+	height: 300px;
 }
 .mm > td:first-of-type {
 	color:#f00;
@@ -59,7 +60,7 @@ img{
 				</tr>
 				<tr>
 					<td colspan="7">
-						<img src="../fff/family.jpg" alt="" />
+						<img src="../fff/family<%=m %>.JPG" alt="" />
 					</td>
 				</tr>
 				<tr  class="mm"  align="center">
