@@ -1,3 +1,4 @@
+<%@page import="basic_p.ReqStudDTO"%>
 <%@page import="basic_p.NoticeDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -23,8 +24,31 @@
 	
 	request.setAttribute("noticeData", noticeData);
 	
+	request.setAttribute("mypageData", new ReqStudDTO("차은우","78","89","91"));
+	
 
 	String mainUrl = "service/"+main+".jsp";
+	
+	
+	/*
+	
+	빵집
+
+-----------------------------------
+          |
+  빵집소개  |
+   제품    |
+   이벤트  |
+----------------------------------	
+
+
+*/
+	
+	
+	
+	
+	
+	
 %>    
 <!DOCTYPE html>
 <html>
