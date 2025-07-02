@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	String mainUrl = (String)request.getAttribute("mainUrl");
+%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,12 +20,17 @@
 	background-color: #ff0;
 	margin: auto;
 }
+section{
+	width:100%;
+	height: 300px;
+	background-color: #fff;
+}
 </style>
 </head>
 <body>
 	<div class="wrapper">
 		<jsp:include page="hhh.jsp"/>
-		<section>난 내용</section>
+		<section><jsp:include page="<%=mainUrl %>"/></section>
 		<jsp:include page="footer.jsp"/>
 	</div>
 </body>
