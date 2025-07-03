@@ -4,11 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ex500입니다.</title>
+<title>exArrIndex</title>
 </head>
 <body>
-	<h1>ex500입니다.</h1>
-	exception 사용할 경우 page directive 에서  isErrorPage="true" <br/>
-	<%=exception.getMessage() %>
+	<h1>exArrIndex입니다.</h1>
+	
 </body>
 </html>

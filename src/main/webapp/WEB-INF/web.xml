@@ -15,4 +15,14 @@
 		<location>/ttrryy/ex500.jsp</location>
 	</error-page>
 	
+	<error-page>
+		<error-code>404</error-code>
+		<location>/ttrryy/ex404.jsp</location>
+	</error-page>
+	
+	<error-page>
+		<exception-type>java.lang.ArrayIndexOutOfBoundsException</exception-type>
+		<location>/ttrryy/exArrIndex.jsp</location>
+	</error-page>
+	
 </web-app>
