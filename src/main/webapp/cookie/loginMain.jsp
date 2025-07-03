@@ -3,10 +3,12 @@
  <%
  	String pname=null;
  
- 	for(Cookie coo : request.getCookies()){
- 		if(coo.getName().equals("pname")){
- 			pname = coo.getValue();
- 		}
+ 	if(request.getCookies()!=null){
+	 	for(Cookie coo : request.getCookies()){
+	 		if(coo.getName().equals("pname")){
+	 			pname = coo.getValue();
+	 		}
+	 	}
  	}
  %>
 <!DOCTYPE html>
@@ -31,7 +33,7 @@
 /* 로그인 기능을 구현하세요 
 로그인 아웃시 이름으로 확인메세지 보일것
 
-  'aaa', '1111', '장동건',
+  'aaa','1111', '장동건',
   'bbb','2222', '장서건',
   'ccc','3333', '장남건',
   'ddd','4444', '장중건',
