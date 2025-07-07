@@ -43,3 +43,13 @@ drop table member;
 옷번호,     제품명,   가격,       출시일,      판매일,      크기(천단위)
 */
 
+create table shirt(
+
+	no int,
+    title varchar(100),
+    price double,
+	reg_date date,
+    sale_date datetime,
+    size int
+);
+
