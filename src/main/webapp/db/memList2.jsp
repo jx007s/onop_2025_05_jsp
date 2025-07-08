@@ -41,7 +41,7 @@
 		dto.setName(rs.getString("name"));
 		dto.setHeight(rs.getInt("height"));
 		dto.setMail(rs.getInt("mail"));
-		dto.setRegDate(rs.getDate("birth"));
+		dto.setBirth(rs.getDate("birth"));
 		
 		// list 항목에 dto 추가
 		memData.add(dto);

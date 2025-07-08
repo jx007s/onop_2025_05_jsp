@@ -6,7 +6,7 @@ public class Mem2DTO {
 
 	String id, name;
 	Integer mail, height;
-	Date regDate;
+	Date birth;
 	public String getId() {
 		return id;
 	}
@@ -31,12 +31,15 @@ public class Mem2DTO {
 	public void setHeight(Integer height) {
 		this.height = height;
 	}
-	public Date getRegDate() {
-		return regDate;
+	public Date getBirth() {
+		return birth;
 	}
-	public void setRegDate(Date regDate) {
-		this.regDate = regDate;
+	public void setBirth(Date birth) {
+		this.birth = birth;
 	}
-	
-	
+	@Override
+	public String toString() {
+		return "Mem2DTO [id=" + id + ", name=" + name + ", mail=" + mail + ", height=" + height + ", birth=" + birth
+				+ "]";
+	}
 }

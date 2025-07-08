@@ -26,11 +26,14 @@
 	<tr>
 		<td><%=dto.getId() %></td>
 		<td><%=dto.getName() %></td>
-		<td><%=dto.getRegDate() %></td>
+		<td><%=dto.getBirth() %></td>
 		<td><%=dto.getHeight() %></td>
 		<td><%=dto.getMail() %></td>
 	</tr>
 	<% } %>
+	<tr>
+		<td colspan="5" align="right"><a href="MemJoinForm">회원가입</a></td>
+	</tr>
 </table>
 </body>
 </html>
