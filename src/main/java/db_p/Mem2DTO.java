@@ -1,5 +1,6 @@
 package db_p;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Mem2DTO {
@@ -7,6 +8,9 @@ public class Mem2DTO {
 	String id, name;
 	Integer mail, height;
 	Date birth;
+	
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	
 	public String getId() {
 		return id;
 	}
@@ -34,6 +38,11 @@ public class Mem2DTO {
 	public Date getBirth() {
 		return birth;
 	}
+	
+	public String getBirthStr() {
+		return sdf.format(birth);
+	}
+	
 	public void setBirth(Date birth) {
 		this.birth = birth;
 	}

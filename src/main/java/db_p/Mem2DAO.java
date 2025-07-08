@@ -91,8 +91,13 @@ public class Mem2DAO {
 		//4. 쿼리문 실행
 		String sql = "insert into mem2 "
 				+ "(id, name, birth, height, mail) values "
-				+ "('fff','이상한이름','2002-05-06',180, 1122)";
+				+ "('"+dto.getId()+"','"
+				+dto.getName()+"','"
+				+dto.getBirthStr()+"',"
+				+dto.getHeight()+", "+
+				dto.getMail()+")";
 		
+		System.out.println(sql);
 		try {
 			ret = stmt.executeUpdate(sql);
 			
