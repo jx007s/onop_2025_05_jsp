@@ -80,3 +80,9 @@ select date_format(now(), '%Y')
 select now(), now()+10;
 
 -- mem2 성년인 사람의 올해 생일을 출력하세요
+
+select *, 
+str_to_date(concat(date_format(now(),'%Y-'),date_format(birth,'%m-%d')),'%Y-%m-%d') as now_birth 
+from mem2
+where adddate(birth, interval 19 year) < now();
+
