@@ -50,4 +50,10 @@ aes_decrypt(unhex('7D5C7A40009B3836A6C35D2ED353DCA0'), 'qwer');
 -- 각 과목의 null 값은 0으로 대체하여 계산하세요
 -- 평균은 소숫점 2자리에서 반올림 하세요
 
-
+select * , 
+ifnull(kor,0)+ifnull(eng,0)+ifnull(mat,0) as tot ,
+round((ifnull(kor,0)+ifnull(eng,0)+ifnull(mat,0))/3,2) as avg,
+mid('가양미우수', 
+   interval((ifnull(kor,0)+ifnull(eng,0)+ifnull(mat,0))/3,0,60,70,80,90) , 1) 
+      as grade
+from exam;
