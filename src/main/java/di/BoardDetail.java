@@ -2,13 +2,19 @@ package di;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import model_p.BoardDAO;
+import model_p.BoardDTO;
 
 public class BoardDetail implements MvcAction{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		
+		int id = Integer.parseInt(request.getParameter("id"));
 
-		System.out.println("BoardDetail 서비스 실행");
+		BoardDTO dto = new 	BoardDAO().detail(id);
+		request.setAttribute("dto", dto);
+		System.out.println("BoardDetail 서비스 실행"+dto);
 		
 	}
 
