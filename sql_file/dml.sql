@@ -76,6 +76,10 @@ id,  hakgi, name,  pid, reg_date, kor, eng,  mat
 
 */
 
+select * from exam
+order by id desc
+limit 9, 3;  -- limit 시작번호, 갯수
+
 
 
 

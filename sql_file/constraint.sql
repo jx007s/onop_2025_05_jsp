@@ -60,3 +60,34 @@ delete from mmm2 where pid = 3;
 insert into mmm2 
 (hobby) values
 ('그룹토의하기');
+
+create table reservation(
+	rid int auto_increment primary key,
+    title varchar(100),
+    mmid varchar(100),
+    
+    -- 제약 조건 외래키 지정
+    constraint foreign key(mmid) references member(mid)
+);
+
+insert into reservation 
+(title, mmid) values
+('회식','aaa');
+
+select * from reservation;
+
+insert into reservation 
+(title) values
+('소갈비찜');
+
+-- 참조하는 테이블 컬럼에 존재하지 않는 값을 입력할 수 없다.
+-- 외래키의 허용 : 참조 테이블 컬럼의 값 or null
+insert into reservation 
+(title, mmid) values
+('노래방','ddd');
+
+delete from member where mid = 'ccc';
+
+-- 참조키에서 사용하고 있는 경우 삭제 불가
+delete from member where mid = 'aaa';
+
