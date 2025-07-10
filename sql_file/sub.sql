@@ -84,6 +84,10 @@ where mat > all
 (select mat from exam ex
 where pid = 'aaa');
 
+/*
+김교수의 학생 중 국어점수가 40점 이하인 학생의 수학점수를 10점 추가하세요
+*/
+
 
  
  
