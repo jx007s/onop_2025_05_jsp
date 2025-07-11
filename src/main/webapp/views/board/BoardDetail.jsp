@@ -47,6 +47,9 @@ td > img {
 	<tr>
 		<td colspan="2" align="right">
 			<a href="<%=request.getContextPath() %>/board/BoardList">목록으로</a>
+			<a href="<%=request.getContextPath() %>/board/BoardDeleteForm?id=<%=dto.getId() %>">삭제</a>
+			<a href="<%=request.getContextPath() %>/board/BoardModifyForm?id=<%=dto.getId() %>">수정</a>
+			<a href="<%=request.getContextPath() %>/board/BoardReplyForm?id=<%=dto.getId() %>">답변</a>
 		</td>
 	</tr>
 </table>
