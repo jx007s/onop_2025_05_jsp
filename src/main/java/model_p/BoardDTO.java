@@ -51,6 +51,11 @@ public class BoardDTO {
 	public String getContent() {
 		return content;
 	}
+	
+	public String getContentBr() {
+		return content.replaceAll("\n", "<br/>");
+	}
+	
 	public void setContent(String content) {
 		this.content = content;
 	}
@@ -92,6 +97,11 @@ public class BoardDTO {
 	
 	
 	public void setUpfile(String upfile) {
+		
+		if(upfile != null && upfile.trim().equals("")) {
+			upfile = null;
+		}
+		
 		this.upfile = upfile;
 	}
 	public Date getRegDate() {

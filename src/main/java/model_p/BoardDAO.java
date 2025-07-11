@@ -117,6 +117,50 @@ public class BoardDAO {
 	}
 	
 	
+	
+	
+	public void write(BoardDTO dto){
+		// 새로 늘어갈 id 확인
+		String sql = "select max(id) + 1 as max_id from board";
+		try {
+			ptmt = con.prepareStatement(sql);
+			
+			rs = ptmt.executeQuery();
+			
+			rs.next();
+			
+			int max_id = rs.getInt("max_id");
+			
+			System.out.println("max_id : "+max_id);
+			
+			sql = "insert into board "
+				+ "(id ,gid ,seq ,lev ,cnt, title,  content,  pname,    pw ,  upfile,    reg_date) values "
+				+ "( ? , ?  ,0     ,0,  -1 ,     ?    ,  ?    ,  ?     ,  ?   ,  ?     , now() )";
+			
+			ptmt = con.prepareStatement(sql);
+			ptmt.setInt(1, max_id);
+			ptmt.setInt(2, max_id);
+			ptmt.setString(3, dto.getTitle());
+			ptmt.setString(4, dto.getContent());
+			ptmt.setString(5, dto.getPname());
+			ptmt.setString(6, dto.getPw());
+			ptmt.setString(7, dto.getUpfile());
+			
+			ptmt.executeUpdate();
+			
+			dto.setId(max_id);
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+	}
+	
+	
+	
 	public void close() {
 		if(rs!=null) try {rs.close();} catch (SQLException e) {}
 		if(ptmt!=null) try {ptmt.close();} catch (SQLException e) {}

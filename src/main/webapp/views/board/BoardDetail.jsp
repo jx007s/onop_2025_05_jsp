@@ -42,7 +42,7 @@ td > img {
 	</tr>
 	<tr>
 		<td>내용</td>
-		<td><%=dto.getContent() %></td>
+		<td><%=dto.getContentBr() %></td>
 	</tr>
 	<tr>
 		<td colspan="2" align="right">
