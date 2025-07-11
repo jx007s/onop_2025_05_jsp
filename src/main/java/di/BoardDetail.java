@@ -12,8 +12,13 @@ public class BoardDetail implements MvcAction{
 		
 		int id = Integer.parseInt(request.getParameter("id"));
 
+		//조회수 늘리기
+		new	BoardDAO().addCount(id);
+		
+		//데이터 가져오기
 		BoardDTO dto = new 	BoardDAO().detail(id);
 		request.setAttribute("dto", dto);
+		
 		System.out.println("BoardDetail 서비스 실행"+dto);
 		
 	}

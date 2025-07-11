@@ -32,7 +32,7 @@ public class BoardController extends HttpServlet {
 		
 //		response.setContentType("text/html;charset=UTF-8");
 //		System.out.println(request.getRequestURI());
-//		System.out.println(request.getContextPath()+"/board/");
+		System.out.println(request.getContextPath()+"/board/");
 //		System.out.println(  (request.getContextPath()+"/board/").length()   );
 		
 		String cate = "board";

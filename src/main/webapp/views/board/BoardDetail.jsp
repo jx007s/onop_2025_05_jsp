@@ -4,6 +4,11 @@
 <h2>BoardDetail 페이지 입니다.</h2>
 <% BoardDTO dto = (BoardDTO)request.getAttribute("dto"); %>
 <%-- <%=dto%> --%>
+<style>
+td > img {
+	width : 200px;
+}
+</style>
 <table border="">
 	<tr>
 		<td>제목</td>
@@ -17,10 +22,20 @@
 		<td>작성일</td>
 		<td><%=dto.getRegDateStr() %></td>
 	</tr>
+	<% if(dto.getUpfile()  != null) { %>
 	<tr>
 		<td>파일</td>
-		<td><%=dto.getUpfile() %></td>
+		<td>
+		<% if(dto.isImg()) {%>
+			<img src="<%=request.getContextPath() %>/fff/<%=dto.getUpfile() %>" alt="" /> 
+		<%}else{ %>
+		<a href="<%=request.getContextPath() %>/DownloadReg?fileName=<%=dto.getUpfile() %>">
+			<%=dto.getUpfile() %> 다운로드</a>
+			 			
+		<%} %>
+		</td>
 	</tr>
+	<% } %>
 	<tr>
 		<td>조회수</td>
 		<td><%=dto.getCnt() %></td>
@@ -31,7 +46,7 @@
 	</tr>
 	<tr>
 		<td colspan="2" align="right">
-			<a href="BoardList">목록으로</a>
+			<a href="<%=request.getContextPath() %>/board/BoardList">목록으로</a>
 		</td>
 	</tr>
 </table>

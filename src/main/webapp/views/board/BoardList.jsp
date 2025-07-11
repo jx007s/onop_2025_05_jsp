@@ -21,7 +21,7 @@
 	<tr>
 		<td><%=cnt++ %></td>
 		<td>
-		<a href="BoardDetail?id=<%=dto.getId() %>"><%=dto.getTitle() %></a>
+		<a href="<%=request.getContextPath() %>/board/BoardDetail?id=<%=dto.getId() %>"><%=dto.getTitle() %></a>
 		</td>
 		<td><%=dto.getPname() %></td>
 		<td><%=dto.getRegDateStr() %></td>

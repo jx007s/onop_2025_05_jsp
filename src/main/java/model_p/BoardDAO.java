@@ -97,6 +97,26 @@ public class BoardDAO {
 	
 	
 	
+	public void addCount(int id){
+		BoardDTO dto = null;
+		
+		String sql = "update board set cnt = cnt + 1 where id = ? ";
+		try {
+			ptmt = con.prepareStatement(sql);
+			
+			ptmt.setInt(1, id);	// 1 번째 ? 에   id 대입
+			
+			ptmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+	}
+	
+	
 	public void close() {
 		if(rs!=null) try {rs.close();} catch (SQLException e) {}
 		if(ptmt!=null) try {ptmt.close();} catch (SQLException e) {}

@@ -2,6 +2,7 @@ package model_p;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class BoardDTO {
@@ -66,8 +67,30 @@ public class BoardDTO {
 		this.pw = pw;
 	}
 	public String getUpfile() {
+		if(upfile != null && upfile.trim().equals("")) {
+			upfile = null;
+		}
+		
 		return upfile;
 	}
+	
+	public boolean isImg() {
+		
+		if(getUpfile() == null) {
+			return false;
+		}
+		
+		String nowExt = upfile.toLowerCase().substring(upfile.lastIndexOf(".")+1);
+		
+		ArrayList<String> imgExts = new ArrayList<String>();
+		for(String ext: "jpg,jpeg,bmp,gif,png".split(",")) {
+			imgExts.add(ext);
+		}
+		
+		return imgExts.contains(nowExt);
+	}
+	
+	
 	public void setUpfile(String upfile) {
 		this.upfile = upfile;
 	}
