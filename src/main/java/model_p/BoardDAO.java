@@ -161,6 +161,32 @@ public class BoardDAO {
 	
 	
 	
+	
+	public int delete(BoardDTO dto){
+		
+		int res = 0;
+		
+		String sql = "delete from board where id = ? and pw = ?";
+		try {
+			
+			ptmt = con.prepareStatement(sql);
+			ptmt.setInt(1, dto.getId());
+			ptmt.setString(2, dto.getPw());
+						
+			res = ptmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		
+		return res;
+	}
+	
+	
+	
 	public void close() {
 		if(rs!=null) try {rs.close();} catch (SQLException e) {}
 		if(ptmt!=null) try {ptmt.close();} catch (SQLException e) {}
