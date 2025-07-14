@@ -30,7 +30,7 @@
 			<% } %>
 		└
 		<%} %>
-		<a href="<%=request.getContextPath() %>/board/BoardDetail?id=<%=dto.getId() %>"><%=dto.getTitle() %></a>
+		<a href="<%=request.getContextPath() %>/board/BoardDetail?id=<%=dto.getId() %>&nowPage=<%=pDTO.getNowPage()%>"><%=dto.getTitle() %></a>
 		</td>
 		<td><%=dto.getPname() %></td>
 		<td><%=dto.getRegDateStr() %></td>
@@ -48,8 +48,9 @@
 			[<%=i %>]	
 		<% }else{ %>
 			<a href="?nowPage=<%=i%>"><%=i%></a>
-		<% } } %>
-		<a href="?nowPage=<%=pDTO.getEndPage()+1%>"> 다음 </a>
+		<% } }  if(pDTO.getEndPage() < pDTO.getTotalPage()) { %>
+			<a href="?nowPage=<%=pDTO.getEndPage()+1%>"> 다음 </a>
+		<% } %>
 		</td>
 	</tr>
 	<tr>

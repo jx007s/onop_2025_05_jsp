@@ -7,6 +7,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import model_p.PageDTO;
+
 import java.io.IOException;
 
 import di.MvcAction;
@@ -49,6 +51,10 @@ public class BoardController extends HttpServlet {
 		try {
 			
 			request.setAttribute("mainUrl", mainUrl);
+			
+			// 페이지 정보 보내기
+			request.setAttribute("pDTO", new PageDTO(request));
+			
 			
 			//5. service 가기
 			MvcAction action = (MvcAction)Class.forName("di."+service).newInstance();

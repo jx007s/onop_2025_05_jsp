@@ -9,11 +9,14 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
 import model_p.BoardDAO;
 import model_p.BoardDTO;
+import model_p.PageDTO;
 
 public class BoardDeleteReg implements MvcAction{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		
+		PageDTO pDTO = new PageDTO(request);
 		
 		BoardDTO dto = new BoardDTO();
 		
@@ -24,7 +27,7 @@ public class BoardDeleteReg implements MvcAction{
 		BoardDTO upfileDto = new BoardDAO().detail(dto.getId());
 		
 		String msg = "암호 불일치";
-		String goUrl = request.getContextPath()+"/board/BoardDeleteForm?id="+dto.getId();
+		String goUrl = request.getContextPath()+"/board/BoardDeleteForm?id="+dto.getId()+"&nowPage="+pDTO.getNowPage();
 		
 		int cnt = new BoardDAO().delete(dto);
 		
@@ -42,7 +45,7 @@ public class BoardDeleteReg implements MvcAction{
 			}
 			
 			msg = "삭제되었습니다.";
-			goUrl = request.getContextPath()+"/board/BoardList";
+			goUrl = request.getContextPath()+"/board/BoardList?nowPage="+pDTO.getNowPage();
 		}
 		
 		System.out.println("BoardDeleteReg 서비스 실행"+cnt+dto);

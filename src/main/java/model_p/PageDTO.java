@@ -51,6 +51,10 @@ public class PageDTO {
 		if(totalCnt % cnt != 0) {
 			totalPage++;
 		}
+		
+		if(endPage > totalPage) {
+			endPage = totalPage;
+		}
 	}
 	
 	
