@@ -28,12 +28,16 @@ public class BoardDAO {
 		}
 	}
 	
-	public ArrayList<BoardDTO> list(){
+	public ArrayList<BoardDTO> list(int start, int cnt){
 		ArrayList<BoardDTO> res = new ArrayList<BoardDTO>();
 		
-		String sql = "select * from board order by gid desc, seq";
+		String sql = "select * from board order by gid desc, seq limit ?, ?";
 		try {
 			ptmt = con.prepareStatement(sql);
+			
+			ptmt.setInt(1, start);
+			ptmt.setInt(2, cnt);
+			
 			rs = ptmt.executeQuery();
 			
 			while(rs.next()) {
@@ -225,12 +229,35 @@ public class BoardDAO {
 			
 			ptmt = con.prepareStatement(sql);
 			
-			
 			ptmt.setInt(1, dto.getGid());
 			ptmt.setInt(2, dto.getSeq());
-			
 						
 			ptmt.executeUpdate();
+			
+			//글작성
+			sql = "insert into board "
+					+ "(gid ,seq ,lev ,cnt, title,  content,  pname,    pw  , reg_date) values "
+					+ "( ?  , ?   , ? ,  -1 ,  ?    ,  ?    ,  ?     ,  ?   , now() )";
+				
+			ptmt = con.prepareStatement(sql);
+			ptmt.setInt(1, dto.getGid());
+			ptmt.setInt(2, dto.getSeq()+1);
+			ptmt.setInt(3, dto.getLev()+1);
+			ptmt.setString(4, dto.getTitle());
+			ptmt.setString(5, dto.getContent());
+			ptmt.setString(6, dto.getPname());
+			ptmt.setString(7, dto.getPw());
+						
+			ptmt.executeUpdate();
+			
+			//새 글 아이디 받아오기
+			sql = "select max(id) as max_id from board";
+			ptmt = con.prepareStatement(sql);
+			rs = ptmt.executeQuery();
+			
+			rs.next();	
+			dto.setId(rs.getInt("max_id"));
+			
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
