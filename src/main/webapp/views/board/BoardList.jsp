@@ -21,6 +21,12 @@
 	<tr>
 		<td><%=cnt++ %></td>
 		<td>
+		<% if(dto.getLev()>0) {
+			for(int i = 0; i<dto.getLev(); i++ ) { %>
+				&nbsp;&nbsp;
+			<% } %>
+		└
+		<%} %>
 		<a href="<%=request.getContextPath() %>/board/BoardDetail?id=<%=dto.getId() %>"><%=dto.getTitle() %></a>
 		</td>
 		<td><%=dto.getPname() %></td>

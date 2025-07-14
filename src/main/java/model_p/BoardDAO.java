@@ -31,7 +31,7 @@ public class BoardDAO {
 	public ArrayList<BoardDTO> list(){
 		ArrayList<BoardDTO> res = new ArrayList<BoardDTO>();
 		
-		String sql = "select * from board order by gid desc";
+		String sql = "select * from board order by gid desc, seq";
 		try {
 			ptmt = con.prepareStatement(sql);
 			rs = ptmt.executeQuery();
@@ -184,6 +184,64 @@ public class BoardDAO {
 		
 		return res;
 	}
+	
+	
+	
+	public int modify(BoardDTO dto){
+		
+		int res = 0;
+		
+		String sql = "update board set pname = ?, title= ?, content = ?, cnt = cnt - 1 "
+				+ "where id = ? and pw = ? ";
+		try {
+			
+			ptmt = con.prepareStatement(sql);
+			
+			ptmt.setString(1, dto.getPname());
+			ptmt.setString(2, dto.getTitle());
+			ptmt.setString(3, dto.getContent());
+			ptmt.setInt(4, dto.getId());
+			ptmt.setString(5, dto.getPw());
+						
+			res = ptmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		
+		return res;
+	}
+	
+	
+	public void reply(BoardDTO dto){
+		
+		
+		//기존글 변경
+		String sql = "update board set seq = seq + 1 where gid = ? and seq > ? ";
+		try {
+			
+			ptmt = con.prepareStatement(sql);
+			
+			
+			ptmt.setInt(1, dto.getGid());
+			ptmt.setInt(2, dto.getSeq());
+			
+						
+			ptmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		
+		
+	}
+	
 	
 	
 	
