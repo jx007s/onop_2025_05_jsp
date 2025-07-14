@@ -1,10 +1,13 @@
+<%@page import="model_p.PageDTO"%>
 <%@page import="model_p.BoardDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <h2>BoardList 페이지 입니다.</h2>
 <%
-	ArrayList<BoardDTO> mainData = (ArrayList<BoardDTO>)request.getAttribute("mainData");  
+	ArrayList<BoardDTO> mainData = (ArrayList<BoardDTO>)request.getAttribute("mainData");
+
+	PageDTO pDTO = (PageDTO)request.getAttribute("pDTO");
 %>
 <%-- <%=mainData%> --%>
 <table border="">
@@ -19,7 +22,7 @@
 	int cnt = 1;
 	for(BoardDTO dto : mainData){ %>	
 	<tr>
-		<td><%=cnt++ %></td>
+		<td><%=pDTO.getStart() + cnt++ %></td>
 		<td>
 		<% if(dto.getLev()>0) {
 			for(int i = 0; i<dto.getLev(); i++ ) { %>
@@ -36,9 +39,17 @@
 <% } %>	
 	<tr>
 		<td colspan="5" align="center">
-		<% for(int i = 1; i <= 17 ; i++) { %>
+		<% if( pDTO.getStartPage() > 1) { %>
+			<a href="?nowPage=<%=pDTO.getStartPage()-1%>"> 이전 </a>
+		<% }
+			for(int i = pDTO.getStartPage(); i <= pDTO.getEndPage() ; i++) { 
+			if(pDTO.getNowPage()==i){// 현재 페이지라면 
+		%>				
+			[<%=i %>]	
+		<% }else{ %>
 			<a href="?nowPage=<%=i%>"><%=i%></a>
-		<% } %>
+		<% } } %>
+		<a href="?nowPage=<%=pDTO.getEndPage()+1%>"> 다음 </a>
 		</td>
 	</tr>
 	<tr>

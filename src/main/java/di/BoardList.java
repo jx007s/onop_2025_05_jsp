@@ -25,6 +25,8 @@ public class BoardList implements MvcAction{
 		
 		// view에 data 보내기
 		request.setAttribute("mainData", data);
+		
+		request.setAttribute("pDTO", pDTO);
 
 		System.out.println("BoardList 서비스 실행 : "+pDTO);
 		

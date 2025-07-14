@@ -4,8 +4,8 @@ import jakarta.servlet.http.HttpServletRequest;
 
 public class PageDTO {
 
-	int cnt = 3;
-	int nowPage, start, totalCnt, totalPage; 
+	int cnt = 3, pageCnt = 4;
+	int nowPage=1, start, totalCnt, totalPage, startPage, endPage; 
 	
 	public PageDTO(HttpServletRequest request) {
 		
@@ -14,6 +14,9 @@ public class PageDTO {
 		}
 		
 		start   = (nowPage-1)*cnt;
+		
+		startPage = (nowPage-1) / pageCnt * pageCnt +1; 
+		endPage = startPage + pageCnt -1;
 	}
 
 	public int getCnt() {
@@ -49,11 +52,22 @@ public class PageDTO {
 			totalPage++;
 		}
 	}
+	
+	
+
+	public int getStartPage() {
+		return startPage;
+	}
+
+	public int getEndPage() {
+		return endPage;
+	}
 
 	@Override
 	public String toString() {
-		return "PageDTO [cnt=" + cnt + ", nowPage=" + nowPage + ", start=" + start + ", totalCnt=" + totalCnt
-				+ ", totalPage=" + totalPage + "]";
+		return "PageDTO [cnt=" + cnt + ", pageCnt=" + pageCnt + ", nowPage=" + nowPage + ", start=" + start
+				+ ", totalCnt=" + totalCnt + ", totalPage=" + totalPage + ", startPage=" + startPage + ", endPage="
+				+ endPage + "]";
 	}
 
 	
