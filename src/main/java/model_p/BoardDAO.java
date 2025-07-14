@@ -28,15 +28,15 @@ public class BoardDAO {
 		}
 	}
 	
-	public ArrayList<BoardDTO> list(int start, int cnt){
+	public ArrayList<BoardDTO> list(PageDTO pDTO){
 		ArrayList<BoardDTO> res = new ArrayList<BoardDTO>();
 		
 		String sql = "select * from board order by gid desc, seq limit ?, ?";
 		try {
 			ptmt = con.prepareStatement(sql);
 			
-			ptmt.setInt(1, start);
-			ptmt.setInt(2, cnt);
+			ptmt.setInt(1, pDTO.start);
+			ptmt.setInt(2, pDTO.cnt);
 			
 			rs = ptmt.executeQuery();
 			
@@ -64,6 +64,30 @@ public class BoardDAO {
 		
 		return res;
 	}
+	
+	
+	
+	public int totalCnt( ){
+		int res = 0;
+		
+		String sql = "select count(*) from board ";
+		try {
+			ptmt = con.prepareStatement(sql);
+			rs = ptmt.executeQuery();
+			
+			rs.next();
+			res = rs.getInt(1);  //첫번째 컬럼
+				
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		
+		return res;
+	}
+	
 	
 	
 	public BoardDTO detail(int id){

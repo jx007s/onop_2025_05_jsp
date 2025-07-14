@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model_p.BoardDAO;
 import model_p.BoardDTO;
+import model_p.PageDTO;
 
 public class BoardList implements MvcAction{
 
@@ -13,23 +14,19 @@ public class BoardList implements MvcAction{
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		
-		int nowPage = 1;
-		
-		if(request.getParameter("nowPage")!=null) {
-			nowPage = Integer.parseInt(request.getParameter("nowPage"));
-		}
-		
-		
-		int cnt = 3;
-		int start = (nowPage-1)*cnt;
+		PageDTO pDTO = new PageDTO(request);
 		
 		// 6, 8 						// 7 
-		ArrayList<BoardDTO> data = new BoardDAO().list(start, cnt);
+		ArrayList<BoardDTO> data = new BoardDAO().list(pDTO);
+		
+		// 게시물 갯수 구하기
+		pDTO.setTotalCnt(new BoardDAO().totalCnt());
+		
 		
 		// view에 data 보내기
 		request.setAttribute("mainData", data);
 
-		System.out.println("BoardList 서비스 실행 : "+data);
+		System.out.println("BoardList 서비스 실행 : "+pDTO);
 		
 	}
 

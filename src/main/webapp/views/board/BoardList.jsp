@@ -35,6 +35,13 @@
 	</tr>
 <% } %>	
 	<tr>
+		<td colspan="5" align="center">
+		<% for(int i = 1; i <= 17 ; i++) { %>
+			<a href="?nowPage=<%=i%>"><%=i%></a>
+		<% } %>
+		</td>
+	</tr>
+	<tr>
 		<td colspan="5" align="right">
 			<a href="BoardWriteForm">글쓰기</a>
 		</td>
