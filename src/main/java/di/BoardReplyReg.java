@@ -4,11 +4,14 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model_p.BoardDAO;
 import model_p.BoardDTO;
+import model_p.PageDTO;
 
 public class BoardReplyReg implements MvcAction{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		
+		PageDTO pDTO = new PageDTO(request);
 		
 		//기존글 가져오기 - gid, seq, lev
 		BoardDTO dto = new BoardDAO().detail(Integer.parseInt(request.getParameter("id")));
@@ -23,7 +26,7 @@ public class BoardReplyReg implements MvcAction{
 		new BoardDAO().reply(dto);
 		
 		String msg = "답변 작성되었습니다.";
-		String goUrl = request.getContextPath()+"/board/BoardDetail?id="+dto.getId();
+		String goUrl = request.getContextPath()+"/board/BoardDetail?id="+dto.getId()+"&nowPage="+pDTO.getNowPage();
 		
 		System.out.println("BoardReplyReg 서비스 실행"+dto);
 		

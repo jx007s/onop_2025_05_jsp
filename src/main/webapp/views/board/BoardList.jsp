@@ -55,7 +55,7 @@
 	</tr>
 	<tr>
 		<td colspan="5" align="right">
-			<a href="BoardWriteForm">글쓰기</a>
+			<a href="BoardWriteForm?nowPage=<%=pDTO.getNowPage()%>">글쓰기</a>
 		</td>
 	</tr>
 </table>

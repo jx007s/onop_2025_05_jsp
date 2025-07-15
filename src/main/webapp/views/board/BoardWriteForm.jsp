@@ -1,5 +1,7 @@
+<%@page import="model_p.PageDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<% PageDTO pDTO = (PageDTO)request.getAttribute("pDTO"); %>    
 <h2>BoardWriteForm 입니다.</h2>
 <form action="BoardWriteReg" method="post" enctype="multipart/form-data">
 	<table border="">
@@ -26,7 +28,7 @@
 		<tr>
 			<td colspan="2" align="center">
 				<input type="submit" value="글작성" />
-				<a href="<%=request.getContextPath() %>/board/BoardList">목록으로</a>
+				<a href="<%=request.getContextPath() %>/board/BoardList?nowPage=<%=pDTO.getNowPage()%>">목록으로</a>
 			</td>
 		</tr>
 	</table>
